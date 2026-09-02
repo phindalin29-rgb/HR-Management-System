@@ -40,10 +40,10 @@ RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 # Set permissions for Laravel
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
+# Make entrypoint script executable
+RUN chmod +x /var/www/docker-entrypoint.sh
+
 EXPOSE 80
 
-# Auto run migration, seed, storage link then start apache
-CMD php artisan migrate --force && \
-    php artisan db:seed --force && \
-    php artisan storage:link && \
-    apache2-foreground
+ENTRYPOINT ["/var/www/docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
