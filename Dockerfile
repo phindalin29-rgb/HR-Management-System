@@ -41,3 +41,9 @@ RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
 EXPOSE 80
+
+# Auto run migration, seed, storage link then start apache
+CMD php artisan migrate --force && \
+    php artisan db:seed --force && \
+    php artisan storage:link && \
+    apache2-foreground
