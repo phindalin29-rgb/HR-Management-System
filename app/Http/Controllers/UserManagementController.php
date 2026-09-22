@@ -218,20 +218,21 @@ class UserManagementController extends Controller
     /** Save Profile Information */
     public function profileInformation(Request $request)
     {
+        DB::beginTransaction();
         try {
-            if (! empty($request->images)) {
+            if ($request->hasFile('images')) {
                 $image_name = $request->hidden_image;
                 $image = $request->file('images');
+
                 if ($image_name == 'photo_defaults.jpg') {
-                    if ($image != '') {
-                        $image_name = rand().'.'.$image->getClientOriginalExtension();
-                        $image->move(public_path('/assets/images/'), $image_name);
-                    }
+                    $image_name = rand().'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path('assets/images'), $image_name);
                 } else {
-                    if ($image != '') {
-                        $image_name = rand().'.'.$image->getClientOriginalExtension();
-                        $image->move(public_path('/assets/images/'), $image_name);
-                        unlink('assets/images/'.Auth::user()->avatar);
+                    $oldAvatar = $request->hidden_image;
+                    $image_name = rand().'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path('assets/images'), $image_name);
+                    if ($oldAvatar !== 'photo_defaults.jpg' && file_exists(public_path('assets/images/'.$oldAvatar))) {
+                        unlink(public_path('assets/images/'.$oldAvatar));
                     }
                 }
                 $update = [

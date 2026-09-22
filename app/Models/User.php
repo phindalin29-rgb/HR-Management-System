@@ -37,6 +37,11 @@ class User extends Authenticatable
         'last_login' => 'datetime',
     ];
 
+    public function getAvatarAttribute($value)
+    {
+        return $value ?: 'photo_defaults.jpg';
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');

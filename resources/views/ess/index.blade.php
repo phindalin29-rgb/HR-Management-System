@@ -23,8 +23,8 @@
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body text-center">
-                            <img src="{{ URL::to('/assets/images/'. ($user->avatar ?? 'user.jpg')) }}" class="avatar-lg rounded-circle" alt="">
-                            <h4 class="mt-3">{{ $user->name }}</h4>
+                             <img src="{{ URL::to('/assets/images/'. ($user->avatar ?? 'photo_defaults.jpg')) }}" class="avatar-lg rounded-circle" alt="">
+                             <h4 class="mt-3">{{ $user->name }}</h4>
                             <p class="text-muted">{{ $user->position }} &middot; {{ $user->department }}</p>
                             <p class="text-muted">{{ $user->email }}</p>
                             <a href="{{ route('attendance/qrcode/page') }}" class="btn btn-info btn-block">My QR Attendance</a>

@@ -18,10 +18,10 @@ class LoginController extends Controller
 
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /** Display the login page */
-    public function login()
+    /** Handle login form submission (POST) */
+    public function login(Request $request)
     {
-        return view('auth.login');
+        return $this->authenticate($request);
     }
 
     /** Authenticate user and redirect */

@@ -1076,7 +1076,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('profile/information/save') }}" method="POST">
+                        <form action="{{ route('profile/information/save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -1084,7 +1084,8 @@
                                         <img class="inline-block" src="{{ URL::to('/assets/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
                                         <div class="fileupload btn">
                                             <span class="btn-text">edit</span>
-                                            <input class="upload" type="file" id="upload" name="upload">
+                                            <input class="upload" type="file" id="image" name="images">
+                                            <input type="hidden" name="hidden_image" id="e_image" value="{{ Auth::user()->avatar }}">
                                         </div>
                                     </div>
                                     <div class="row">

@@ -66,7 +66,7 @@
                     <div class="profile-widget">
                         <div class="profile-img">
                             <a href="{{ url('employee/profile/'.$lists->user_id) }}" class="avatar">
-                                <img class="user-profile" src="{{ URL::to('/assets/images/'. $lists->avatar) }}" alt="{{ $lists->avatar }}" alt="{{ $lists->avatar }}">
+                                <img class="user-profile" src="{{ URL::to('/assets/images/'. $lists->avatar) }}" alt="{{ $lists->avatar }}">
                             </a>
                         </div>
                         <div class="dropdown profile-action">

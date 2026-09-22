@@ -128,8 +128,8 @@
                 @endhas_module
                 @has_module('assets')
                 <li class="menu-title"> <span>Administration</span> </li>
-                <li> <a href="assets.html"><i class="la la-object-ungroup">
-                    </i> <span>Assets</span></a>
+                <li class="{{set_active(['assets/page'])}}">
+                    <a href="{{ route('assets/page') }}"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
                 </li>
                 @endhas_module
                 @has_module('recruitment')

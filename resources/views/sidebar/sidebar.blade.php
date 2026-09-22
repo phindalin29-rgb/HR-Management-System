@@ -130,9 +130,11 @@
                         <a href="{{ route('roles/page') }}"><i class="la la-key"></i> <span>Roles</span></a>
                     </li>
                 @endif
-                <li> <a href="assets.html"><i class="la la-object-ungroup">
-                    </i> <span>Assets</span></a>
-                </li>
+                @has_module('assets')
+                    <li class="{{set_active(['assets/page'])}}">
+                        <a href="{{ route('assets/page') }}"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
+                    </li>
+                @endhas_module
                 <li class="{{set_active(['user/dashboard/index','jobs/dashboard/index','user/dashboard/all','user/dashboard/applied/jobs','user/dashboard/interviewing','user/dashboard/offered/jobs','user/dashboard/visited/jobs','user/dashboard/archived/jobs','user/dashboard/save','jobs','job/applicants','job/details','page/manage/resumes','page/shortlist/candidates','page/interview/questions','page/offer/approvals','page/experience/level','page/candidates','page/schedule/timing','page/aptitude/result'])}} submenu">
                     <a href="#" class="{{ set_active(['user/dashboard/index','jobs/dashboard/index','user/dashboard/all','user/dashboard/save','jobs','job/applicants','job/details']) ? 'noti-dot' : '' }}"><i class="la la-briefcase"></i>
                         <span> Jobs </span> <span class="menu-arrow"></span>
