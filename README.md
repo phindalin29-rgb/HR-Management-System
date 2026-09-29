@@ -103,7 +103,7 @@ The system provides separate workflows for **HR/Admin** and **Employees**, allow
 * 📊 Employees by Department
 * 📈 Attendance – Last 7 Days
 * 📑 HR reports
-
+...............
 ---
 
 # 🆕 What's New in This Update
